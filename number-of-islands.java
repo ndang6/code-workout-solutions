@@ -3,10 +3,7 @@ class Solution {
     
     public int numIslands(char[][] grid) {
         int count = 0;
-        n = grid.length;
-        
-        if(n == 0) return 0;
-        
+        n = grid.length;     
         m = grid[0].length;
         
         for(int i = 0; i < n; i++){
@@ -29,6 +26,6 @@ class Solution {
         dfs(grid, i + 1, j);
         dfs(grid, i - 1, j);
         dfs(grid, i, j + 1);
-        dfs(grid, i, j + 1);
+        dfs(grid, i, j - 1);
     }
 }
