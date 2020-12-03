@@ -1,21 +1,26 @@
+// s = {[()]}
+// returns true
 class Solution {
-    public boolean isValid(String s) {
-        Stack<Character> stack = new Stack<>();
+	public boolean isValid(String s){      
+        Stack<Character> myStack = new Stack<>();
         
         for(char c : s.toCharArray()){
-            if(c == '(')
-                stack.push(')');
+            if(c == '(') myStack.push(')');
             
-            else if(c == '[')
-                stack.push(']');
+            else if(c == '[') myStack.push(']');
             
-            else if(c == '{')
-                stack.push('}');
-            
-            else if(stack.isEmpty()) return false;
-            else if(stack.pop() != c) return false;
+            else if(c == '{') myStack.push('}');
+                
+            else if(!myStack.isEmpty()){
+                if(c == myStack.pop())
+                    continue;
+                else
+                    return false;
+            }
+            else // empty stack
+                return false;       
         }
         
-        return stack.isEmpty();
+        return myStack.isEmpty();
     }
 }
