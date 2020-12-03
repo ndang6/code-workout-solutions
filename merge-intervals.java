@@ -3,13 +3,12 @@ class Solution {
         if (intervals.length <= 1)
 			return intervals;
 
-        Comparator<int[]> myComp = new Comparator<int[]>() {
+        Arrays.sort(intervals, new Comparator<int[]>() {
             @Override
             public int compare(int[] i1, int[] i2) {
                 return i1[0] - i2[0];
             }
-        };
-        Arrays.sort(intervals, myComp);
+        });
         
 		List<int[]> list = new ArrayList<>();
         
