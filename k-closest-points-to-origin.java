@@ -3,7 +3,7 @@ class Solution {
         int len =  points.length, m = 0, n = len - 1;
         
         while (m < n) {
-            int mid = helper(points, m, n);
+            int mid = partition(points, m, n);
             
             if (mid == K) 
                 break;
@@ -15,23 +15,23 @@ class Solution {
         return Arrays.copyOfRange(points, 0, K);
     }
 
-    private int helper(int[][] A, int m, int n) {
-        // chose a "random" pivot
-        int[] pivot = A[m];
+    private int partition(int[][] A, int m, int n) {
+        int[] pivot = A[m]; // chose a "random" pivot
         
         while (m < n) {
-            // A[n] is greater than the pivot
-            while (m < n && compare(A[n], pivot) >= 0) 
-                n--;
-            A[m] = A[n]; // swap
             
-            // A[m] is smaller than the pivot
+            while (m < n && compare(A[n], pivot) >= 0) 
+                n--; // if A[n] is greater than the pivot, do thing
+            A[m] = A[n]; // otherwise, swap
+            
+            
             while (m < n && compare(A[m], pivot) <= 0) 
-                m++;
+                m++; // same thing with A[m]
             A[n] = A[m];
         }
-        A[m] = pivot;
-        return m;
+
+        A[m] = pivot; // re-assign the value of the pivot to the location A[m]
+        return m;     // returns the index of the pivot after partitioning
     }
 
     private int compare(int[] p1, int[] p2) {
