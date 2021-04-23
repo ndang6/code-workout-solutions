@@ -14,9 +14,12 @@ class Solution {
     }
     
     private String extend(String s, int i, int j) {
-        for (; i >= 0 && j < s.length(); i--, j++) {
-            if (s.charAt(i) != s.charAt(j)) 
-                break;
+        while(i >= 0 && j < s.length()){
+          if(s.charAt(i) == s.charAt(j)){
+            i--;
+            j++;
+          }
+          else break;
         }
         return s.substring(i + 1, j);
     }
