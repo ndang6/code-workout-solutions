@@ -5,12 +5,9 @@ class Solution {
         while (m < n) {
             int mid = partition(points, m, n);
             
-            if (mid == K) 
-                break;
-            if (mid < K) 
-                m = mid + 1;
-            else 
-                n = mid - 1;
+            if (mid == K) break;
+            else if (mid < K) m = mid + 1;
+            else n = mid - 1;
         }
         return Arrays.copyOfRange(points, 0, K);
     }
@@ -21,12 +18,11 @@ class Solution {
         while (m < n) {
             
             while (m < n && compare(A[n], pivot) >= 0) 
-                n--; // if A[n] is greater than the pivot, do thing
+                n--; // A[n] is greater than the pivot
             A[m] = A[n]; // otherwise, swap
-            
-            
+                   
             while (m < n && compare(A[m], pivot) <= 0) 
-                m++; // same thing with A[m]
+                m++; 
             A[n] = A[m];
         }
 

@@ -17,7 +17,7 @@ class Solution {
       }
       
       // step 2
-      for(int i = n; i >= 0; i--){
+      for(int i = n; i > p; i--){
         if(nums[i] > pv){
           swap(nums, p, i);
           break;
@@ -25,7 +25,7 @@ class Solution {
       }
       
         
-      // step 3
+      // step 3: We need to sort, but because this is already the last permuation, we simply reverse it
       reverse(nums, p + 1, n);
     }
     
